@@ -36,30 +36,34 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()){
                     case R.id.btnprobar:
-                        int num = 0;
-                        if (cont < intSelect) {
-                            num = Integer.valueOf(numero.getText().toString());
-                            if (num < rand) {
-                                //Toast.makeText(getApplicationContext(), "Es menor ..."+rand, Toast.LENGTH_LONG).show();
-                                cont++;
-                                historial.setText(historial.getText() + "\nTu número es menor. Intento:" + cont + " Número: " + num);
-                                probar.setEnabled(true);
-                            } else if (num > rand) {
-                                //Toast.makeText(getApplicationContext(), "Es mayor ..."+rand, Toast.LENGTH_LONG).show();
-                                cont++;
-                                historial.setText(historial.getText() + "\nTú número es mayor. Intento:" + cont + " Número: " + num);
-                                probar.setEnabled(true);
-                            } else if (num == rand) {
-                                //Toast.makeText(getApplicationContext(), "Adivinaste, el numero era "+num, Toast.LENGTH_LONG).show();
-                                cont++;
-                                historial.setText(historial.getText() + "\nGanaste!!\nEn el turno " + cont + "\nEra el " + num);
+                        try {
+                            int num = 0;
+                            if (cont < intSelect) {
+                                num = Integer.valueOf(numero.getText().toString());
+                                if (num < rand) {
+                                    //Toast.makeText(getApplicationContext(), "Es menor ..."+rand, Toast.LENGTH_LONG).show();
+                                    cont++;
+                                    historial.setText(historial.getText() + "\nTu número es menor. Intento:" + cont + " Número: " + num);
+                                    probar.setEnabled(true);
+                                } else if (num > rand) {
+                                    //Toast.makeText(getApplicationContext(), "Es mayor ..."+rand, Toast.LENGTH_LONG).show();
+                                    cont++;
+                                    historial.setText(historial.getText() + "\nTú número es mayor. Intento:" + cont + " Número: " + num);
+                                    probar.setEnabled(true);
+                                } else if (num == rand) {
+                                    //Toast.makeText(getApplicationContext(), "Adivinaste, el numero era "+num, Toast.LENGTH_LONG).show();
+                                    cont++;
+                                    historial.setText(historial.getText() + "\nGanaste!!\nEn el turno " + cont + "\nEra el " + num);
+                                    probar.setEnabled(false);
+                                }
+                            }
+                            if (cont==intSelect && (num!=rand)) {
+                                historial.setText(historial.getText() + "\nPerdiste!!\nAgotaste tus " +
+                                        intSelect + " intentos\nEl número era " + rand + "\nDale atrás y vuelve a intentar!!");
                                 probar.setEnabled(false);
                             }
-                        }
-                        if (cont==intSelect && (num!=rand)) {
-                            historial.setText(historial.getText() + "\nPerdiste!!\nAgotaste tus " +
-                                    intSelect + " intentos\nEl número era " + rand + "\nDale atrás y vuelve a intentar!!");
-                            probar.setEnabled(false);
+                        }catch (Exception E){
+                            Toast.makeText(getApplicationContext(),"No ingresó un valor", Toast.LENGTH_LONG).show();
                         }
                         break;
                     default:
