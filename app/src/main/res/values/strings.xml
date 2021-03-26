@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">NúmeroMágico</string>
+    <string name="Title">Juego del número mágico</string>
+    <string name="INTENTOS">Elija los intentos</string>
+    <string name="INICIAR">iniciar</string>
+    <string name="ADIVINA">Advina un número entre 0 y 100</string>
+    <string name="HISTORIAL">Historial</string>
+    <string name="PROBAR">Probar</string>
+    <string name="REINICIAR">Reiniciar</string>
+</resources>
